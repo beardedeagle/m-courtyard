@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.7] - 2026-07-09
+
+### Fixed
+- **Qwen 3.6 Ollama Presets**: Updated the curated Ollama Qwen 3.6 model list by adding `qwen3.6:27b` as a lighter local option and replacing unavailable A3B quantization tags with the current Ollama `qwen3.6` tags.
+
 ## [0.5.6] - 2026-04-24
 
 ### Fixed

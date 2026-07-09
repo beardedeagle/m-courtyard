@@ -173,9 +173,9 @@ const OLLAMA_ONLINE_GROUPS: OnlineModelBrandGroup[] = sortOnlineGroupsByRelease(
     labelKey: "onlineBrands.qwen",
     versions: [
       { id: "qwen3.6:35b", label: "Qwen 3.6 35B", size: "~24GB", descKey: "topRated", releasedAt: "2026-04-18" },
-      { id: "qwen3.6:35b-a3b-nvfp4", label: "Qwen 3.6 35B-A3B · NVFP4", size: "~22GB", descKey: "balanced", releasedAt: "2026-04-16" },
-      { id: "qwen3.6:35b-a3b-q8_0", label: "Qwen 3.6 35B-A3B · Q8_0", size: "~39GB", descKey: "higherQuality", releasedAt: "2026-04-16" },
-      { id: "qwen3.6:35b-a3b-bf16", label: "Qwen 3.6 35B-A3B · BF16", size: "~71GB", descKey: "higherQuality", releasedAt: "2026-04-16" },
+      { id: "qwen3.6:27b", label: "Qwen 3.6 27B", size: "~17GB", descKey: "balanced", releasedAt: "2026-04-18" },
+      { id: "qwen3.6:35b-mlx", label: "Qwen 3.6 35B · MLX", size: "~22GB", descKey: "balanced", releasedAt: "2026-04-18" },
+      { id: "qwen3.6:27b-mlx", label: "Qwen 3.6 27B · MLX", size: "~20GB", descKey: "balanced", releasedAt: "2026-04-18" },
     ],
     moreUrl: "https://ollama.com/library/qwen3.6",
   },
