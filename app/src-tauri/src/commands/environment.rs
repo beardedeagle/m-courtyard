@@ -148,7 +148,16 @@ pub async fn setup_environment(app: tauri::AppHandle) -> Result<(), String> {
     }));
 
     let venv_result = tokio::process::Command::new(&uv_path)
-        .args(["venv", &venv_dir.to_string_lossy(), "--python", "3.11"])
+        // uv 0.8+ requires --clear before replacing an existing environment.
+        // The setup flow intentionally rebuilds the managed Python 3.11 venv
+        // before installing/upgrading its dependencies.
+        .args([
+            "venv",
+            &venv_dir.to_string_lossy(),
+            "--python",
+            "3.11",
+            "--clear",
+        ])
         .envs(build_uv_env())
         .output()
         .await

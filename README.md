@@ -32,7 +32,9 @@ M-Courtyard is a **desktop assistant** designed to demystify LLM fine-tuning. Fo
 - **Optimized for Apple MLX**: Powered by `mlx-lm`, maximizing the potential of unified memory on M1/M2/M3/M4 chips.
 - **AI-Powered Data Prep**: Automatically turn unstructured documents into high-quality instruction datasets using local models, or fall back to built-in rules when you do not want AI generation.
 
-## Latest Update (v0.5.6)
+## Latest Update (v0.5.8)
+
+- **uv Environment Setup Compatibility**: The managed Python environment setup now rebuilds incomplete or existing `.venv` directories correctly with newer uv versions.
 
 - **macOS Tahoe + MLX Training Stability**: M-Courtyard now automatically sets `AGX_RELAX_CDM_CTXSTORE_TIMEOUT=1` for training subprocesses to mitigate the upstream MLX / macOS Tahoe Metal watchdog regression that can crash LoRA runs with `kIOGPUCommandBufferCallbackErrorImpactingInteractivity`.
 - **Clearer Recovery Guidance**: Smart Alerts now recognize this Metal watchdog signature and explain the fallback path if it still appears on Tahoe.

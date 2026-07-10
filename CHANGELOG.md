@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.8] - 2026-07-10
+
+### Fixed
+- **macOS Python Environment Setup**: Added the `--clear` flag to the managed `uv venv` command so setup works with uv 0.8+ when `~/Courtyard/python/.venv` already exists or was left in an incomplete state. Fixes [#10](https://github.com/Mcourtyard/m-courtyard/issues/10) and [Discussion #11](https://github.com/Mcourtyard/m-courtyard/discussions/11).
+
 ## [0.5.7] - 2026-07-09
 
 ### Fixed
@@ -415,6 +420,8 @@ Delivers the **Batch Processing** cluster (PRD D-1 · D-2 · H-3): multi-file dr
 - **GitHub Actions CI**: Automated .dmg build and release on tag push
 - **Discord Integration**: Automated release notifications via webhook
 
+[0.5.8]: https://github.com/Mcourtyard/m-courtyard/releases/tag/v0.5.8
+[0.5.7]: https://github.com/Mcourtyard/m-courtyard/releases/tag/v0.5.7
 [0.5.6]: https://github.com/Mcourtyard/m-courtyard/releases/tag/v0.5.6
 [0.5.5]: https://github.com/Mcourtyard/m-courtyard/releases/tag/v0.5.5
 [0.5.4]: https://github.com/Mcourtyard/m-courtyard/releases/tag/v0.5.4

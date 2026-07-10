@@ -32,7 +32,9 @@ M-Courtyard 是一个**桌面端助手**，旨在简化大模型微调流程。�
 - **专为 Apple MLX 优化**：基于 `mlx-lm`，充分压榨 M1/M2/M3/M4 芯片统一内存的潜力。
 - **AI 赋能数据处理**：可使用 `Ollama` 或 `LM Studio` 本地模型自动将非结构化文档转化为高质量指令数据集；如果不希望使用 AI，也可退回内置规则流程。
 
-## 最新更新（v0.5.6）
+## 最新更新（v0.5.8）
+
+- **uv 环境配置兼容性修复**：使用新版 uv 时，应用现在可以正确重建已存在或不完整的 `.venv` 目录。
 
 - **macOS Tahoe + MLX 训练稳定性修复**：M-Courtyard 现在会在训练子进程里自动设置 `AGX_RELAX_CDM_CTXSTORE_TIMEOUT=1`，用于缓解上游 MLX / macOS Tahoe 的 Metal watchdog 回归问题；这个问题会让 LoRA 训练抛出 `kIOGPUCommandBufferCallbackErrorImpactingInteractivity` 后中途崩溃。
 - **更清晰的恢复提示**：Smart Alerts 已可识别这类 Metal watchdog 错误，并在 Tahoe 上继续出现时给出更明确的兜底建议。
