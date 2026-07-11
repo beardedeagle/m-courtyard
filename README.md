@@ -32,7 +32,10 @@ M-Courtyard is a **desktop assistant** designed to demystify LLM fine-tuning. Fo
 - **Optimized for Apple MLX**: Powered by `mlx-lm`, maximizing the potential of unified memory on M1/M2/M3/M4 chips.
 - **AI-Powered Data Prep**: Automatically turn unstructured documents into high-quality instruction datasets using local models, or fall back to built-in rules when you do not want AI generation.
 
-## Latest Update (v0.5.8)
+## Latest Update (v0.5.9)
+
+- **Reliable mlx-lm Detection**: Settings and Dashboard now read the installed `mlx-lm` package metadata instead of importing its full runtime, preventing a valid installation from being shown as missing.
+- **Setup Verification**: Environment setup now verifies the installed `mlx-lm` version before reporting success.
 
 - **uv Environment Setup Compatibility**: The managed Python environment setup now rebuilds incomplete or existing `.venv` directories correctly with newer uv versions.
 

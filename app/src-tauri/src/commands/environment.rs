@@ -6,6 +6,8 @@ use crate::commands::config::{resolve_ollama_bin_status_from_config, build_uv_en
 use std::path::PathBuf;
 
 pub const MIN_MLX_LM_VERSION: &str = "0.31.2";
+const MLX_LM_VERSION_PROBE: &str =
+    "from importlib.metadata import version; print(version('mlx-lm'))";
 
 #[derive(Clone, Serialize)]
 pub struct EnvironmentStatus {
@@ -47,8 +49,11 @@ fn detect_mlx_lm_version(executor: &PythonExecutor) -> Option<String> {
         return None;
     }
 
+    // Read installed distribution metadata instead of importing the full
+    // runtime. A runtime import error must not make a present package appear
+    // as "Not installed" in the UI.
     std::process::Command::new(executor.python_bin())
-        .args(["-c", "import mlx_lm; print(mlx_lm.__version__)"])
+        .args(["-c", MLX_LM_VERSION_PROBE])
         .output()
         .ok()
         .filter(|output| output.status.success())
@@ -188,12 +193,36 @@ pub async fn setup_environment(app: tauri::AppHandle) -> Result<(), String> {
         return Err(format!("mlx-lm install failed: {}", stderr));
     }
 
+    // Match the Settings/Dashboard detection path before reporting success.
+    let mlx_lm_version = detect_mlx_lm_version(&executor).ok_or_else(|| {
+        "mlx-lm installation completed, but its installed package metadata could not be verified. Please retry the setup."
+            .to_string()
+    })?;
+    if !is_mlx_lm_version_supported(&mlx_lm_version) {
+        return Err(format!(
+            "mlx-lm v{} was installed, but v{} or newer is required. Please retry the setup.",
+            mlx_lm_version, MIN_MLX_LM_VERSION
+        ));
+    }
+
     let _ = app.emit("env:setup-progress", serde_json::json!({
         "step": "Environment ready!",
         "percent": 100
     }));
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::is_mlx_lm_version_supported;
+
+    #[test]
+    fn mlx_lm_version_gate_accepts_the_minimum_version() {
+        assert!(is_mlx_lm_version_supported("0.31.2"));
+        assert!(is_mlx_lm_version_supported("0.31.3"));
+        assert!(!is_mlx_lm_version_supported("0.31.1"));
+    }
 }
 
 /// Install uv package manager via the official installer script.

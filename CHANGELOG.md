@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.9] - 2026-07-11
+
+### Fixed
+- **mlx-lm Installation Detection**: Settings and Dashboard now read the installed `mlx-lm` distribution metadata instead of importing the full runtime. This prevents a successfully installed package from being incorrectly reported as missing when an optional runtime import fails during the status check. Environment setup also verifies the installed version before reporting success. Follow-up to [#10](https://github.com/Mcourtyard/m-courtyard/issues/10) and [Discussion #11](https://github.com/Mcourtyard/m-courtyard/discussions/11).
+
 ## [0.5.8] - 2026-07-10
 
 ### Fixed
@@ -420,6 +425,7 @@ Delivers the **Batch Processing** cluster (PRD D-1 · D-2 · H-3): multi-file dr
 - **GitHub Actions CI**: Automated .dmg build and release on tag push
 - **Discord Integration**: Automated release notifications via webhook
 
+[0.5.9]: https://github.com/Mcourtyard/m-courtyard/releases/tag/v0.5.9
 [0.5.8]: https://github.com/Mcourtyard/m-courtyard/releases/tag/v0.5.8
 [0.5.7]: https://github.com/Mcourtyard/m-courtyard/releases/tag/v0.5.7
 [0.5.6]: https://github.com/Mcourtyard/m-courtyard/releases/tag/v0.5.6
